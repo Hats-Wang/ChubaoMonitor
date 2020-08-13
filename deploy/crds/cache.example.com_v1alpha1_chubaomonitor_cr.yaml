@@ -1,0 +1,32 @@
+apiVersion: cache.example.com/v1alpha1
+kind: ChubaoMonitor
+metadata:
+  name: chubaomonitor
+  namespace: test
+spec:
+  prometheus:
+    sizeprom: 1
+    imageprom: prom/prometheus:v2.13.1
+    imagePullPolicyprom: IfNotPresent
+    hostPath:
+      path: /var/lib/chubaofs_prometheus
+    portprom: 9090
+    resourcesprom:
+      requests:
+        cpu: 100m
+        memory: 512Mi
+      limits:
+        cpu: 100m
+        memory: 512Mi
+  grafana:
+    sizegrafana: 1
+    imagegrafana: grafana/grafana:6.4.4
+    imagePullPolicygrafana: IfNotPresent
+    portgrafana: 3000
+    resourcesgrafana:
+      requests:
+        memory: 512Mi
+        cpu: 500m
+      limits:
+        memory: 1024Mi
+        cpu: 1000m
