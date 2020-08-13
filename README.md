@@ -27,6 +27,8 @@ operator-sdk up local --namespace=default
 kubectl create -f ./deploy/crds/cache.example.com_v1alpha1_chubaomonitor_cr.yaml
 ```
 
+
+
 CRD definition: ./deploy/crds/cache.example.com_chubaomonitors_crd.yaml.
 
 Business logic code are located in folder ./pkg/controller/chubaomonitor.
