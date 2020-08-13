@@ -15,19 +15,21 @@ Access to a Kubernetes v1.11.3+ cluster
 git clone https://github.com/Hats-Wang/ChubaoMonitor.git
 cd ChubaoMonitor
 kubectl create -f ./deploy/crds/cache.example.com_chubaomonitors_crd.yaml
-operator-sdk up local --namespace=default
+operator-sdk up local --namespace=$CHUBAOMONITOR_NAMESPACE
 ```
-
+$CHUBAOMONITOR_NAMESPACE is the namespace where your ChubaoMonitor deploys.
 
 2.Edit file ./deploy/crds/cache.example.com_v1alpha1_chubaomonitor_cr.yaml to customize your own ChubaoMonitor instance.
 
+3. Create Configmap in the namespace where your ChubaoMonitor deploys.
+```
+kubectl create -f chubaofsmonitor_configmap.yaml
+```
 
-3.Create your own ChubaoMonitor instance:
+4.Create your own ChubaoMonitor instance:
 ```
 kubectl create -f ./deploy/crds/cache.example.com_v1alpha1_chubaomonitor_cr.yaml
 ```
-
-
 
 CRD definition: ./deploy/crds/cache.example.com_chubaomonitors_crd.yaml.
 
