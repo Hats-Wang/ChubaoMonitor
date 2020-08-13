@@ -70,14 +70,6 @@ func add(mgr manager.Manager, r reconcile.Reconciler) error {
 		return err
 	}
 	log.Info("Service being watched")
-	err = c.Watch(&source.Kind{Type: &corev1.ConfigMap{}}, &handler.EnqueueRequestForOwner{
-		IsController: true,
-		OwnerType:    &cachev1alpha1.ChubaoMonitor{},
-	})
-	if err != nil {
-		return err
-	}
-	log.Info("ConfigMap being watched")
 
 	return nil
 }
@@ -136,6 +128,10 @@ func (r *ReconcileChubaoMonitor) Reconcile(request reconcile.Request) (reconcile
 	}
 	//fetch chubaomonitor configmap successfully
 	chubaomonitor.Status.Configmapstatus = true
+
+	if err := controllerutil.SetControllerReference(chubaomonitor, configmapchubaomonitor, r.scheme); err != nil {
+		return ctrl.Result{}, err
+	}
 
 	desiredDeploymentPrometheus := r.Deploymentforprometheus(chubaomonitor)
 	if err := controllerutil.SetControllerReference(chubaomonitor, desiredDeploymentPrometheus, r.scheme); err != nil {

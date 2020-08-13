@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: test
   name: ChubaoMonitor
 spec:
   replicas: 1
@@ -16,7 +17,7 @@ spec:
       containers:
         - name: ChubaoMonitor
           # Replace this with the built image name
-          image: REPLACE_IMAGE
+          image: registry.cn-hangzhou.aliyuncs.com/hats-wang/chubaomonitor_operator:v0.1
           command:
           - ChubaoMonitor
           imagePullPolicy: Always
