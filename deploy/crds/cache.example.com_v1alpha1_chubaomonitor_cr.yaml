@@ -2,7 +2,7 @@ apiVersion: cache.example.com/v1alpha1
 kind: ChubaoMonitor
 metadata:
   name: chubaomonitor
-  namespace: test
+  namespace: default
 spec:
   prometheus:
     sizeprom: 1
