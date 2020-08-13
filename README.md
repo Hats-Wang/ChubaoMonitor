@@ -21,7 +21,7 @@ $CHUBAOMONITOR_NAMESPACE is the namespace where your ChubaoMonitor deploys.
 
 2.Edit file ./deploy/crds/cache.example.com_v1alpha1_chubaomonitor_cr.yaml to customize your own ChubaoMonitor instance.
 
-3. Create Configmap in the namespace where your ChubaoMonitor deploys.
+3. Remember to create Configmap in the namespace where your ChubaoMonitor deploys.
 ```
 kubectl create -f chubaofsmonitor_configmap.yaml
 ```
